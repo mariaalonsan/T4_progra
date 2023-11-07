@@ -4,16 +4,25 @@
 * Muestra el resultado.
 """
 
-# Función para calcular el precio final de un producto con o sin IVA
-def calcular_precio_final(precio, incluir_iva):
-    iva = 0.21  # 21% de IVA
-    precio_final = precio * (1 + iva) if incluir_iva else precio
-    return precio_final
+# Definimos una función para calcular el precio con IVA
+def calcular_precio_con_iva(precio):
+    IVA = 0.21
+    return precio * (1 + IVA)
 
-# Simulación de la entrada del usuario
-precio_producto = 100  # Precio del producto introducido por el usuario
-incluir_iva = True  # El usuario elige calcular el precio con IVA
+# Definimos otra función para calcular el precio sin IVA
+def calcular_precio_sin_iva(precio):
+    return precio
 
-# Llamada a la función y muestra del resultado
-precio_final = calcular_precio_final(precio_producto, incluir_iva)
+# Vamos a pedir al usuario que ingrese el precio del producto
+precio_producto = int(input("Ingrese el precio del producto: "))
 
+# Vamos a preguntar también al usuario si desea calcular el precio con o sin IVA
+opcion_iva = input("Desea calcular el precio con IVA? (si/no): ")
+
+# Y por último vamos a calcular y mostrar el resultado
+if opcion_iva.lower() == 'si':
+    precio_final = calcular_precio_con_iva(precio_producto)
+    print(f"El precio final con IVA es: {precio_final:.2f}")
+else:
+    precio_final = calcular_precio_sin_iva(precio_producto)
+    print(f"El precio final sin IVA es: {precio_final:.2f}")
